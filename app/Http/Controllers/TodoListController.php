@@ -14,7 +14,11 @@ class TodoListController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard', 
+        [
+            // 'lists' => TodoList::with('category', 'author')->orderByDesc('created_at')
+            'lists' => TodoList::with('author')->orderByDesc('created_at')->get()
+        ]);
     }
 
     /**
@@ -46,7 +50,7 @@ class TodoListController extends Controller
      */
     public function show(TodoList $todoList)
     {
-        //
+        return view('show', ['list' => $todoList] );
     }
 
     /**
