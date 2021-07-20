@@ -31,11 +31,11 @@
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-xl text-gray-700 underline">Dashboard</a>
                     @else
-                        <label class="flex center-0 text-gray-600 mb-3" > Please Log in or Register</label>
-                        <a href="{{ route('login') }}" class="text-xl underline">Log in</a>
+                        <label class="flex text-gray-600 mb-3 " > Please Log in or Register </label>
+                        <a href="{{ route('login') }}" class="text-xl underline float-left">Log in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-11 text-xl  underline">Register</a>
+                            <a href="{{ route('register') }}" class="text-xl  underline float-right">Register</a>
                         @endif
                     @endauth
                 </div>
