@@ -18,38 +18,58 @@
                 </div>
             </div>
         </div>
-        <div class="mx-auto max-w-7xl flex">
-            <div class="max-w-sm mx-auto sm:px-6 lg:px-8 pt-5">
-                <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 flex-inline shadow">
+
+
+        <div class="mx-auto max-w-4xl flex">
+            <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 pt-5">
+                <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 shadow max-w-4xl">
+
                     @foreach ($lists as $list)
-                        <a href="/dashboard/{{$list->slug}}">
-                            <p class="py-5 px-8 mx-auto font-semibold text-lg hover:bg-blue-100 float-left">{{ ucwords($list->name) }}</p>
-                        </a>
+                        @if (Auth::user()->id === $list->author->id)
+                            <div class="">
+                                <a href="/dashboard/{{ $list->slug }}">
+                                    <p class="py-5 px-8 font-semibold text-lg hover:bg-blue-100 text-center mx-auto">
+                                        {{ ucwords($list->name) }}</p>
+                                </a>
+                            </div>
+                        @endif
                     @endforeach
-                    
+
                 </div>
             </div>
-            <div class="max-w-sm mx-auto sm:px-6 lg:px-8 pt-5 flex justify-center">
-                <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 flex-inline shadow">
+            <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 pt-5">
+                <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 shadow max-w-6xl">
+
                     @foreach ($lists as $list)
-                        <a href="/dashboard/{{$list->slug}}">
-                            <p class="py-5 px-8 mx-auto font-semibold text-lg hover:bg-blue-100 float-left">{{ ucwords($list->name) }}</p>
-                        </a>
+                        @if (Auth::user()->id === $list->author->id)
+                            <div class="">
+                                <a href="/dashboard/{{ $list->slug }}">
+                                    <p class="py-5 px-8 font-semibold text-lg hover:bg-blue-100 text-center mx-auto">
+                                        {{ ucwords($list->name) }}</p>
+                                </a>
+                            </div>
+                        @endif
                     @endforeach
-                    
+
                 </div>
             </div>
-            <div class="max-w-sm mx-auto sm:px-6 lg:px-8 pt-5 flex justify-center">
-                <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 flex-inline shadow">
+            <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 pt-5">
+                <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 shadow max-w-4xl">
+
                     @foreach ($lists as $list)
-                        <a href="/dashboard/{{$list->slug}}">
-                            <p class="py-5 px-8 mx-auto font-semibold text-lg hover:bg-blue-100 float-left">{{ ucwords($list->name) }}</p>
-                        </a>
+                        @if (Auth::user()->id === $list->author->id)
+                            <div class="">
+                                <a href="/dashboard/{{ $list->slug }}">
+                                    <p class="py-5 px-8 font-semibold text-lg hover:bg-blue-100 text-center mx-auto">
+                                        {{ ucwords($list->name) }}</p>
+                                </a>
+                            </div>
+                        @endif
                     @endforeach
-                    
+
                 </div>
             </div>
         </div>
-        
+
     </div>
 </x-app-layout>

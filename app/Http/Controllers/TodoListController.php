@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\TodoList;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TodoListController extends Controller
 {
@@ -55,10 +58,15 @@ class TodoListController extends Controller
     // }
     public function show(Item $items, TodoList $todoList)
     {
-        return view('show', [
-            'items' => $items->get(),
-            'list' => $todoList
-        ] );
+        if (Gate::allows('list-author', $todoList)){
+            return view('show', [
+                'items' => $items->get(),
+                'list' => $todoList
+            ] );
+        } else {
+            abort(403);
+        }
+        
     }
 
     /**
