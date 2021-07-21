@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\TodoList;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Item extends Model
 {
     use HasFactory;
 
     public function list(){
-        return $this->belongsTo(TodoLists::class, 'list_id');
+        return $this->belongsTo(TodoList::class, 'list_id');
     }
 }

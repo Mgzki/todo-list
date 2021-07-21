@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\TodoList;
 use Illuminate\Http\Request;
 
@@ -48,9 +49,16 @@ class TodoListController extends Controller
      * @param  \App\Models\TodoList  $todoList
      * @return \Illuminate\Http\Response
      */
-    public function show(TodoList $todoList)
+    // public function show(TodoList $todoList)
+    // {
+    //     return view('show', ['list' => $todoList] );
+    // }
+    public function show(Item $items, TodoList $todoList)
     {
-        return view('show', ['list' => $todoList] );
+        return view('show', [
+            'items' => $items->get(),
+            'list' => $todoList
+        ] );
     }
 
     /**

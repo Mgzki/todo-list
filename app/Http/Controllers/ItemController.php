@@ -14,7 +14,10 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard', 
+        [
+            // 'item' => Item::with('author')->orderByDesc('created_at')->get()
+        ]);
     }
 
     /**
@@ -46,7 +49,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        return view('show', ['item' => $item] );
     }
 
     /**
