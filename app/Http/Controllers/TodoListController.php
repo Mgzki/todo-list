@@ -48,13 +48,14 @@ class TodoListController extends Controller
             // 'category_id' => 'required',
         ]);
 
-        TodoList::create([
+        $list = TodoList::create([
             'name' => request('name'),
             'slug' => strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', request('name')))),
             'user_id' => Auth::user()->id,
             'category_id' => 1,
         ]);
-        return redirect('/dashboard')->withSuccess('List created successfully!');
+        $uri = '/dashboard/' . $list->slug;
+        return redirect($uri . '/edit')->withSuccess('List created successfully!');
     }
 
     /**
@@ -86,9 +87,12 @@ class TodoListController extends Controller
      * @param  \App\Models\TodoList  $todoList
      * @return \Illuminate\Http\Response
      */
-    public function edit(TodoList $todoList)
+    public function edit(Item $items, TodoList $todoList)
     {
-        return view('edit', ['list' => $todoList]);
+        return view('edit', [
+            'list' => $todoList,
+            'items' => $items->get(),
+        ]);
     }
 
     /**
