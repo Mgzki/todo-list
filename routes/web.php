@@ -19,11 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard', [TodoListController::class, 'index'])->middleware(['auth'])->name('dashboard');
-
+Route::post('/dashboard', [TodoListController::class, 'store']);
+Route::get('/dashboard/create', [TodoListController::class, 'create']);
+Route::get('/dashboard/{todoList:slug}/edit', [TodoListController::class, 'edit']);
+Route::put('/dashboard/{todoList:slug}', [TodoListController::class, 'update']);
 Route::get('/dashboard/{todoList:slug}', [TodoListController::class, 'show']);
+Route::delete('/dashboard/{todoList:slug}', [TodoListController::class, 'destroy']);
 
 require __DIR__.'/auth.php';

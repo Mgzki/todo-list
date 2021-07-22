@@ -13,7 +13,7 @@
                 </div>
                 <div class="py-6 pr-8 float-right">
                     <div class="">
-                        <h1 class="font-bold text-xl py-2"> Create New List</h1>
+                        <h1 class="font-bold text-xl py-2"><a href="/dashboard/create">Create New List</a> </h1>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 pt-5">
-                <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 shadow max-w-6xl">
+                <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 shadow max-w-xl">
 
                     @foreach ($lists as $list)
                         @if (Auth::user()->id === $list->author->id)

@@ -32,7 +32,7 @@ class TodoListController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -43,7 +43,18 @@ class TodoListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+            // 'category_id' => 'required',
+        ]);
+
+        TodoList::create([
+            'name' => request('name'),
+            'slug' => strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', request('name')))),
+            'user_id' => Auth::user()->id,
+            'category_id' => 1,
+        ]);
+        return redirect('/dashboard')->withSuccess('List created successfully!');
     }
 
     /**
@@ -77,7 +88,7 @@ class TodoListController extends Controller
      */
     public function edit(TodoList $todoList)
     {
-        //
+        return view('edit', ['list' => $todoList]);
     }
 
     /**
@@ -89,7 +100,14 @@ class TodoListController extends Controller
      */
     public function update(Request $request, TodoList $todoList)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+        ]);
+
+        $todoList->update([
+            'name' => request('name'),
+        ]);
+        return redirect('/dashboard');
     }
 
     /**
@@ -100,6 +118,7 @@ class TodoListController extends Controller
      */
     public function destroy(TodoList $todoList)
     {
-        //
+        $todoList->delete();
+        return redirect('/dashboard');
     }
 }
