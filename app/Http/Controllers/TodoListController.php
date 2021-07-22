@@ -21,7 +21,8 @@ class TodoListController extends Controller
         return view('dashboard', 
         [
             // 'lists' => TodoList::with('category', 'author')->orderByDesc('created_at')
-            'lists' => TodoList::with('author')->orderByDesc('created_at')->get()
+            'lists' => TodoList::with('author')->orderByDesc('created_at')->get(),
+            'items' => Item::get(),
         ]);
     }
 
@@ -54,6 +55,12 @@ class TodoListController extends Controller
             'user_id' => Auth::user()->id,
             'category_id' => 1,
         ]);
+        Item::create([
+            'list_id' => $list->id,
+            'content' => 'test',
+            'completed' => 0,
+        ]);
+
         $uri = '/dashboard/' . $list->slug;
         return redirect($uri . '/edit')->withSuccess('List created successfully!');
     }
@@ -89,10 +96,14 @@ class TodoListController extends Controller
      */
     public function edit(Item $items, TodoList $todoList)
     {
-        return view('edit', [
-            'list' => $todoList,
-            'items' => $items->get(),
-        ]);
+        if (Gate::allows('list-author', $todoList)){
+            return view('edit', [
+                'items' => $items->get(),
+                'list' => $todoList
+            ] );
+        } else {
+            abort(403);
+        }
     }
 
     /**

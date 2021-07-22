@@ -22,9 +22,13 @@ Route::get('/', function () {
 Route::get('/dashboard', [TodoListController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::post('/dashboard', [TodoListController::class, 'store']);
 Route::get('/dashboard/create', [TodoListController::class, 'create']);
-Route::get('/dashboard/{todoList:slug}/edit', [TodoListController::class, 'edit']);
-Route::put('/dashboard/{todoList:slug}', [TodoListController::class, 'update']);
 Route::get('/dashboard/{todoList:slug}', [TodoListController::class, 'show']);
+Route::put('/dashboard/{todoList:slug}', [TodoListController::class, 'update']);
 Route::delete('/dashboard/{todoList:slug}', [TodoListController::class, 'destroy']);
+Route::get('/dashboard/{todoList:slug}/edit', [TodoListController::class, 'edit']);
+
+
+
+
 
 require __DIR__.'/auth.php';
