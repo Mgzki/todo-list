@@ -19,14 +19,23 @@
             </div>
         </div>
 
-        <div class="sm:px-6 lg:px-8 pt-5 ">
+        <div class="max-w-7xl sm:px-2 lg:px-4 pt-5 flex flex-wrap mx-auto ">
             @foreach ($lists as $list)
-                <div class="">
-                    @if (Auth::user()->id === $list->author->id)
+                @if (Auth::user()->id === $list->author->id)
+                    <div class="max-w-sm mx-auto flex-auto py-4 flex-wrap w-full">
                         <x-show-list :list="$list" :items="$items" />
-                    @endif
-                </div>
+                    </div>
+                @endif
             @endforeach
         </div>
+        {{-- <div class="max-w-7xl sm:px-6 lg:px-8 pt-5 grid grid-cols-12 mx-auto">
+            @foreach ($lists as $list)
+                @if (Auth::user()->id === $list->author->id)
+                    <div class="max-w-sm mx-auto col-span-4 w-full" >
+                        <x-show-list :list="$list" :items="$items" />
+                    </div>
+                @endif
+            @endforeach
+        </div> --}}
 
 </x-app-layout>
