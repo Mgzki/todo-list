@@ -1,5 +1,5 @@
 @props(['list','items'])
-<div class="max-w-md mx-auto sm:px-6 lg:px-8 pt-5">
+<div class="max-w-sm mx-auto sm:px-6 lg:px-8 pt-5">
     <div class="overflow-hidden sm:rounded-lg border-b border-white shadow divide-y">
         <a href="/dashboard/{{ $list->slug }}/edit">
             <p class="font-semibold text-center py-4 bg-white">{{ $list->name }}</p>
