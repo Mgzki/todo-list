@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\TodoList;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -49,7 +50,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        return view('show', ['item' => $item] );
+        //return view('show', ['item' => $item] );
     }
 
     /**
@@ -83,6 +84,7 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete(); 
+        return redirect('/dashboard/' . $item->list->slug . '/edit');
     }
 }

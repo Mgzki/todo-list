@@ -17,5 +17,5 @@
             </div>
         </div>
     </div>
-    <x-show-list :list="$list" :items="$items"/>
+    <x-show-list :list="$list" :items="$items" :edit=True />
 </x-app-layout>

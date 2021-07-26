@@ -27,6 +27,8 @@ Route::put('/dashboard/{todoList:slug}', [TodoListController::class, 'update']);
 Route::delete('/dashboard/{todoList:slug}', [TodoListController::class, 'destroy']);
 Route::get('/dashboard/{todoList:slug}/edit', [TodoListController::class, 'edit']);
 
+Route::delete('/dashboard/{item:list_id}/edit', [ItemController::class, 'destroy']);
+
 
 
 
