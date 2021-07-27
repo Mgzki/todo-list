@@ -18,7 +18,7 @@
                         </label>
                     </form>
                     @if ($edit)
-                        <form method='POST' action="/dashboard/{{ $item->list_id }}/edit">
+                        <form method='POST' action="/dashboard/{{ $item->id }}/edit">
                             @csrf
                             @method('DELETE')
 

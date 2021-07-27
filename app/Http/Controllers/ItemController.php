@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\TodoList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ItemController extends Controller
 {
@@ -15,10 +16,11 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('dashboard', 
-        [
-            // 'item' => Item::with('author')->orderByDesc('created_at')->get()
-        ]);
+        // return view('dashboard', 
+        // [
+        //     // 'item' => Item::with('author')->orderByDesc('created_at')->get()
+        // ]);
+        return redirect('/dashboard');
     }
 
     /**
@@ -50,7 +52,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //return view('show', ['item' => $item] );
+        return redirect('/dashboard');
     }
 
     /**
@@ -61,7 +63,8 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+
+            return redirect('/dashboard/' . $item->list->slug);
     }
 
     /**
@@ -84,7 +87,7 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        $item->delete(); 
+        $item->delete();
         return redirect('/dashboard/' . $item->list->slug . '/edit');
     }
 }
