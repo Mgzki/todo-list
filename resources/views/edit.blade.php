@@ -18,4 +18,18 @@
         </div>
     </div>
     <x-show-list :list="$list" :items="$items" :edit=True />
+    <div class="max-w-sm mx-auto sm:px-6 lg:px-8 pt-2 pb-9">
+        <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 flex-inline shadow flex-wrap">
+            <form method='POST' action="/dashboard/item" class=" pt-6 pb-7 pr-8 flex justify-center">
+                @csrf
+                <div class="">
+                    <input type="hidden" name="list" value="{{ $list->id }}">
+                    <input type="text" name="content" id="content" value="Enter new item">
+                </div>
+                <button class=" bg-red-500 tracking-wide text-white px-8 py-2 flex shadow-lg align-middle
+                        rounded hover:shadow">Submit</button>
+            </form>
+        </div>
+        
+    </div>
 </x-app-layout>

@@ -41,7 +41,22 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // @dd($request);
+        
+        request()->validate([
+            'content' => 'required'
+        ]);
+
+
+        $item = Item::create([
+            'list_id' => request('list'),
+            'content' => request('content'),
+            'completed' => 0,
+        ]);
+        
+
+        $uri = '/dashboard/' . $item->list->slug;
+        return redirect($uri . '/edit')->withSuccess('List created successfully!');
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\TodoListController;
+use App\Models\Item;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,7 @@ Route::put('/dashboard/{todoList:slug}', [TodoListController::class, 'update']);
 Route::delete('/dashboard/{todoList:slug}', [TodoListController::class, 'destroy']);
 Route::get('/dashboard/{todoList:slug}/edit', [TodoListController::class, 'edit']);
 
+Route::post('/dashboard/item', [ItemController::class, 'store']);
 Route::get('/dashboard/{item:id}/edit/', [ItemController::class, 'edit']);
 Route::delete('/dashboard/{item:id}/edit/', [ItemController::class, 'destroy']);
 

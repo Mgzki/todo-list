@@ -55,11 +55,6 @@ class TodoListController extends Controller
             'user_id' => Auth::user()->id,
             'category_id' => 1,
         ]);
-        Item::create([
-            'list_id' => $list->id,
-            'content' => 'test',
-            'completed' => 0,
-        ]);
 
         $uri = '/dashboard/' . $list->slug;
         return redirect($uri . '/edit')->withSuccess('List created successfully!');

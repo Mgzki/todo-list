@@ -27,9 +27,8 @@
                         </form>
                         <a href="/dashboard/{{ $item->list->slug }}/edit">dsds</a>
                     @endif
-
                 </div>
             @endif
         @endforeach
-    </div>
+    </div>    
 </div>
