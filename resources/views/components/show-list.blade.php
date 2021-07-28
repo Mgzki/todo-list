@@ -6,7 +6,7 @@
         </a>
         @foreach ($items as $item)
             @if ($item->list->id == $list->id)
-                <div class="bg-white hover:bg-gray-300 px-4 py-3">
+                <div class="bg-white hover:bg-gray-300 px-4 py-3 flex-inline mx-auto">
                     <form action="PUT">
                         @csrf
                         <label class="">
@@ -18,14 +18,13 @@
                         </label>
                     </form>
                     @if ($edit)
-                        <form method='POST' action="/dashboard/{{ $item->id }}/edit">
+                        <form method='POST' action="/dashboard/{{ $item->id }}/edit" class="">
                             @csrf
                             @method('DELETE')
 
-                            <button class=" bg-red-500 tracking-wide text-white px-8 py-2 flex shadow-lg align-middle
+                            <button class=" bg-red-500 tracking-wide text-white shadow-lg 
                             rounded hover:shadow">Delete</button>
                         </form>
-                        <a href="/dashboard/{{ $item->list->slug }}/edit">dsds</a>
                     @endif
                 </div>
             @endif
