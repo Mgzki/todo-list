@@ -4,7 +4,7 @@
 
         </x-slot>
 
-        <form method="POST" action="/dashboard">
+        <form method="POST" action="/dashboard" class="">
             @csrf
 
             <!-- List Name -->
@@ -22,6 +22,9 @@
                                 type="text"
                                 name="category"/>
             </div> --}}
+            <div class="mt-6">
+                <x-category-dropdown :categories="$categories"/>
+            </div>
 
             <div class="flex items-center justify-end mt-4">
 

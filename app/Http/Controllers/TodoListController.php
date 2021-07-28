@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Item;
 use App\Models\TodoList;
 
@@ -33,7 +34,9 @@ class TodoListController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('create',[
+            'categories' => Category::all()
+        ]);
     }
 
     /**
