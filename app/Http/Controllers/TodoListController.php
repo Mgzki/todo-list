@@ -49,14 +49,14 @@ class TodoListController extends Controller
     {
         request()->validate([
             'name' => 'required',
-            // 'category_id' => 'required',
+            'category_id' => 'required',
         ]);
 
         $list = TodoList::create([
-            'name' => request('name'),
+            'name' => ucwords(request('name')),
             'slug' => strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', request('name')))),
             'user_id' => Auth::user()->id,
-            'category_id' => 1,
+            'category_id' => request('category'),
         ]);
 
         $uri = '/dashboard/' . $list->slug;

@@ -2,9 +2,9 @@
 <x-dropdown align="left" width="48">
     <x-slot name="trigger">
         <div
-            class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+            class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out cursor-pointer">
             <div>
-                {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Category'}}
+                {{ request('category') ? ucwords(request('category')) : 'Category' }}
             </div>
 
             <div class="">
@@ -18,12 +18,17 @@
 
 
     </x-slot>
+
     <x-slot name="content">
+        
         @foreach ($categories as $category)
-            <x-dropdown-item
-                :active="isset($currentCategory) && $currentCategory->is($category)">
-                {{ ucwords($category->name) }}
-            </x-dropdown-item>
+                <x-dropdown-item :active="isset($currentCategory) && $currentCategory->is($category)" class="cursor-pointer">
+                    {{ ucwords($category->name) }}
+                    <!-- <input type="" name="category" value="{{ $category->id }} "> -->
+                </x-dropdown-item>
         @endforeach
+
     </x-slot>
+    
 </x-dropdown>
+

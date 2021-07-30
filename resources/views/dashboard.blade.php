@@ -4,7 +4,7 @@
 
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-2 ">
-            <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 flex shadow flex-wrap">
+            <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 flex-inline shadow flex-wrap">
                 <div class="py-6 pl-8 mx-auto float-left ">
                     <div class="">
                         <h1 class="font-bold text-xl py-2 "> Your Lists</h1>
