@@ -5,7 +5,7 @@
             <p class="font-semibold text-center py-4 bg-white">{{ $list->name }}</p>
         </a>
         @foreach ($items as $item)
-            @if ($item->list->id == $list->id)
+            {{-- @if ($item->list->id == $list->id) --}}
                 <div class="bg-white hover:bg-gray-300 px-4 py-3 flex-inline mx-auto">
                     <form action="PUT">
                         @csrf
@@ -27,7 +27,7 @@
                         </form>
                     @endif
                 </div>
-            @endif
+            {{-- @endif --}}
         @endforeach
     </div>    
 </div>

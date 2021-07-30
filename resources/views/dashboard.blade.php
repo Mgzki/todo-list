@@ -23,7 +23,7 @@
             @foreach ($lists as $list)
                 @if (Auth::user()->id === $list->author->id)
                     <div class="max-w-sm mx-auto flex-auto py-4 flex-wrap w-full">
-                        <x-show-list :list="$list" :items="$items" :edit=False/>
+                        <x-show-list :list="$list" :items="$list->items" :edit=False/>
                     </div>
                 @endif
             @endforeach

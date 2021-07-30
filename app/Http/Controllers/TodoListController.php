@@ -22,8 +22,8 @@ class TodoListController extends Controller
         return view('dashboard', 
         [
             // 'lists' => TodoList::with('category', 'author')->orderByDesc('created_at')
-            'lists' => TodoList::with('author')->orderByDesc('created_at')->get(),
-            'items' => Item::get(),
+            // 'lists' => TodoList::with('author')->orderByDesc('created_at')->get(),
+            'lists' => Auth::user()->lists()->with(['author', 'items'])->orderByDesc('created_at')->get(),
         ]);
     }
 
@@ -77,13 +77,19 @@ class TodoListController extends Controller
     {
         if (Gate::allows('list-author', $todoList)){
             return view('show', [
-                'items' => $items->get(),
+                'items' => $todoList->items,
                 'list' => $todoList
-            ] );
+            ]);
         } else {
             abort(403);
         }
-        
+
+        // abort_if(! Gate::allows('list-author', $todoList), 403);
+
+        // return view('show', [
+        //     'items' => $todoList->items,
+        //     'list' => $todoList
+        // ]);
     }
 
     /**
@@ -96,9 +102,9 @@ class TodoListController extends Controller
     {
         if (Gate::allows('list-author', $todoList)){
             return view('edit', [
-                'items' => $items->get(),
+                'items' => $todoList->items,
                 'list' => $todoList
-            ] );
+            ]);
         } else {
             abort(403);
         }
@@ -120,6 +126,7 @@ class TodoListController extends Controller
         $todoList->update([
             'name' => request('name'),
         ]);
+
         return redirect('/dashboard');
     }
 
