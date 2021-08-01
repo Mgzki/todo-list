@@ -6,7 +6,7 @@
         </a>
         @foreach ($items as $item)
             {{-- @if ($item->list->id == $list->id) --}}
-                <div class="bg-white hover:bg-gray-300 px-4 py-3 flex-inline mx-auto">
+                <div class="bg-white hover:bg-gray-300 px-4 py-3 flex mx-auto justify-between">
                     <form action="PUT">
                         @csrf
                         <label class="">
@@ -23,7 +23,7 @@
                             @method('DELETE')
 
                             <button class=" bg-red-500 tracking-wide text-white shadow-lg 
-                            rounded hover:shadow">Delete</button>
+                            rounded hover:shadow text-xs ">Delete</button>
                         </form>
                     @endif
                 </div>

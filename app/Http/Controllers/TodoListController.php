@@ -47,10 +47,12 @@ class TodoListController extends Controller
      */
     public function store(Request $request)
     {
+        // @dd($request);
         request()->validate([
             'name' => 'required',
-            'category_id' => 'required',
+            'category' => 'required',
         ]);
+        
 
         $list = TodoList::create([
             'name' => ucwords(request('name')),
