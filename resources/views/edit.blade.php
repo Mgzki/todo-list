@@ -21,18 +21,19 @@
     </div>
     <div class="max-w-sm mx-auto sm:px-6 lg:px-8 pt-2 pb-9">
         <div class="bg-white overflow-hidden sm:rounded-lg border-b border-gray-200 flex-inline shadow flex-wrap">
-            <form method='POST' action="/dashboard/item" class=" pt-6 pb-7 px-2 flex">
+            <form method='POST' action="/dashboard/item" class=" pt-6 pb-7 px-2 flex justify-center">
                 @csrf
-                <div class="">
+                <div class="pr-1">
                     <input type="hidden" name="list" value="{{ $list->id }}">
-                    <input type="text" name="content" id="content" value="Enter new item">
+                    <input type="text" name="content" id="content" value="Enter new item" autofocus onfocus="this.value=''">
                 </div>
-                <button class=" bg-red-500 tracking-wide text-white px-6 py-2 shadow-lg align-middle
-                        rounded hover:shadow">Submit</button>
+                <button class=" bg-blue-500 tracking-wide text-white px-3 py-2 shadow-lg align-middle
+                        rounded hover:shadow ">Submit</button>
             </form>
         </div>
         
     </div>
     <x-show-list :list="$list" :items="$items" :edit=True />
+    <br>
     
 </x-app-layout>
