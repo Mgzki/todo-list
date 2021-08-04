@@ -47,7 +47,6 @@ class TodoListController extends Controller
      */
     public function store(Request $request)
     {
-        // @dd($request);
         request()->validate([
             'name' => 'required',
             'category' => 'required',
@@ -120,7 +119,7 @@ class TodoListController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, TodoList $todoList)
-    {
+    {   
         request()->validate([
             'name' => 'required',
         ]);

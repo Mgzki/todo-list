@@ -41,8 +41,6 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        // @dd($request);
-        
         request()->validate([
             'content' => 'required'
         ]);
@@ -91,7 +89,15 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        //
+        request()->validate([
+            'completed' => ['nullable'],
+        ]);
+
+        $item->update([
+            'completed' => (bool) $request->completed
+        ]);
+
+        return redirect('/dashboard/');
     }
 
     /**

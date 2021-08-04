@@ -6,28 +6,30 @@
         </a>
         @foreach ($items as $item)
             {{-- @if ($item->list->id == $list->id) --}}
-                <div class="bg-white hover:bg-gray-300 px-4 py-3 flex mx-auto justify-between">
-                    <form action="PUT">
+            <div class="bg-white hover:bg-gray-300 px-4 py-3 flex mx-auto justify-between">
+                <form method="POST" action="/dashboard/{{ $item->id }}/edit">
+                    @csrf
+                    @method('put')
+                    <label class="">
+                        <input class="ml-2 mr-1 mb-1 mt-1 inline-block" id="completed" type="checkbox" name="completed"
+                            value="1" onchange="this.form.submit()" 
+                            @if ($item->completed) checked @endif>
+                        <span class="text-sm inline-block @if($item->completed) line-through text-gray-400 @endif">
+                            {{ $item->content }}
+                        </span>
+                    </label>
+                </form>
+                @if ($edit)
+                    <form method='POST' action="/dashboard/{{ $item->id }}/edit" class="">
                         @csrf
-                        <label class="">
-                            <input class="ml-2 mr-1 mb-1 mt-1 inline-block" data-id="{{ $item->completed }}"
-                                type="checkbox" class="">
-                            <span class="text-sm inline-block">
-                                {{ $item->content }}
-                            </span>
-                        </label>
-                    </form>
-                    @if ($edit)
-                        <form method='POST' action="/dashboard/{{ $item->id }}/edit" class="">
-                            @csrf
-                            @method('DELETE')
+                        @method('DELETE')
 
-                            <button class=" bg-red-500 tracking-wide text-white shadow-lg 
+                        <button class=" bg-red-500 tracking-wide text-white shadow-lg 
                             rounded hover:shadow text-xs ">Delete</button>
-                        </form>
-                    @endif
-                </div>
+                    </form>
+                @endif
+            </div>
             {{-- @endif --}}
         @endforeach
-    </div>    
+    </div>
 </div>
