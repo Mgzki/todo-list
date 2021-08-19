@@ -34,9 +34,14 @@ class TodoListController extends Controller
      */
     public function create()
     {
-        return view('create',[
-            'categories' => Category::all()
-        ]);
+        if (Auth::user()) {
+            return view('create',[
+                'categories' => Category::all()
+            ]);
+        } else {
+            abort(403);
+        }
+        
     }
 
     /**
